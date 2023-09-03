@@ -1,14 +1,19 @@
 import cv2
 import numpy as np
 
+color_flag = True
+
 # Путь к папке с изображениями
-image_folder = 'dataset/'
+image_folder = 'dataset/stage1/'
 
 # Создание пустого массива для сохранения названий изображений
 saved_image_names = []
 
 # Начальный индекс изображения
-image_index = 0
+image_index = 1000
+
+# Коэффициент увеличения пикселей
+scale_factor = 20
 
 while True:
     # Формируем имя файла
@@ -38,8 +43,23 @@ while True:
         # Вставка исходного изображения в центр квадрата
         square_image[y_offset:y_offset+image.shape[0], x_offset:x_offset+image.shape[1]] = image
 
-        # Отображение изображения
-        cv2.imshow('Result Image', square_image)
+        if color_flag:
+            # Конвертация в оттенки серого
+            square_image = cv2.cvtColor(square_image, cv2.COLOR_BGR2GRAY)
+
+        # Уменьшение яркости всех пикселей, кроме белых
+        mask = square_image < 230
+        square_image[mask] = square_image[mask] * 0.3  # Например, уменьшим яркость вдвое
+
+
+        # Увеличение изображения
+        enlarged_image = cv2.resize(square_image, (28, 28))
+        
+        # Увеличение размера пикселей
+        enlarged_image1 = cv2.resize(enlarged_image, (28 * scale_factor, 28 * scale_factor), interpolation=cv2.INTER_NEAREST)
+
+        # Отображение увеличенного изображения
+        cv2.imshow('Enlarged Image', enlarged_image1)
 
         # Ожидание нажатия клавиши
         key = cv2.waitKey(0)
@@ -50,11 +70,11 @@ while True:
 
         # Если нажата клавиша 'U', сохраняем название изображения в массиве
         elif key == ord('u'):
-            saved_image_names.append(image_filename)
+            cv2.imwrite(f'dataset/stage2/processed_{image_index}.png', enlarged_image)
             image_index += 1
 
         # Если нажата клавиша 'Esc', выходим из цикла
-        elif key == 27:
+        elif key == ord('q'):
             break
 
     else:
