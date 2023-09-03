@@ -1,3 +1,5 @@
+index = 1000
+
 import cv2
 import numpy as np
 
@@ -7,6 +9,7 @@ points = []
 element_index = 0
 zoom = 1.0
 pan_x, pan_y = 0, 0
+
 
 # Функция для преобразования точек под учетом масштаба и панорамирования
 def transform_points(points, zoom, pan_x, pan_y):
@@ -39,7 +42,7 @@ def mouse_callback(event, x, y, flags, param):
             # Обрезаем изображение, чтобы оставить только непустые фрагменты
             cropped_element = element_image[y:y+h, x:x+w]
             
-            cv2.imwrite(f'dataset/stage1/element_{element_index}.png', cropped_element)
+            cv2.imwrite(f'dataset/stage1/element_{element_index + index}.png', cropped_element)
             element_index += 1
         points = []
 
@@ -48,7 +51,7 @@ cv2.namedWindow('Interactive Image Editor')
 cv2.setMouseCallback('Interactive Image Editor', mouse_callback)
 
 # Считываем изображение
-image = cv2.imread('maxresdefault.jpg')
+image = cv2.imread('dataset/images/test.jpg')
 original_image = image.copy()
 
 while True:
