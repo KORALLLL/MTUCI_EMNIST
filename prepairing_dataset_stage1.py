@@ -1,4 +1,4 @@
-index = 1000
+index = 0
 
 import cv2
 import numpy as np
@@ -59,7 +59,7 @@ while True:
 
     # Отображаем текущее изображение
     if zoom != 1.0:
-        img_copy = cv2.resize(img_copy, None, fx=zoom, fy=zoom)
+        img_copy = cv2.resize(img_copy, None, fx=zoom, fy=zoom,  interpolation=cv2.INTER_NEAREST)
     if pan_x != 0 or pan_y != 0:
         img_copy = cv2.warpAffine(img_copy, np.float32([[1, 0, pan_x], [0, 1, pan_y]]), (img_copy.shape[1], img_copy.shape[0]))
 

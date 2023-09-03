@@ -9,7 +9,7 @@ image_folder = 'dataset/stage2/'
 symbol_image_dict = {}
 
 # Начальный индекс изображения
-image_index = 1
+image_index = 0
 
 # Коэффициент увеличения пикселей
 scale_factor = 20

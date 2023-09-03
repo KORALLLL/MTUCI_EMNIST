@@ -1,8 +1,6 @@
 import cv2
 import numpy as np
 
-color_flag = True
-
 # Путь к папке с изображениями
 image_folder = 'dataset/stage1/'
 
@@ -10,14 +8,15 @@ image_folder = 'dataset/stage1/'
 saved_image_names = []
 
 # Начальный индекс изображения
-image_index = 1000
+old_image_index = 0
+new_image_index = 0
 
 # Коэффициент увеличения пикселей
 scale_factor = 20
 
 while True:
     # Формируем имя файла
-    image_filename = f'element_{image_index}.png'
+    image_filename = f'element_{old_image_index}.png'
     image_path = image_folder + image_filename
 
     # Загрузка изображения
@@ -43,9 +42,8 @@ while True:
         # Вставка исходного изображения в центр квадрата
         square_image[y_offset:y_offset+image.shape[0], x_offset:x_offset+image.shape[1]] = image
 
-        if color_flag:
-            # Конвертация в оттенки серого
-            square_image = cv2.cvtColor(square_image, cv2.COLOR_BGR2GRAY)
+        # Конвертация в оттенки серого
+        square_image = cv2.cvtColor(square_image, cv2.COLOR_BGR2GRAY)
 
         # Уменьшение яркости всех пикселей, кроме белых
         mask = square_image < 230
@@ -66,12 +64,13 @@ while True:
 
         # Если нажата клавиша 'Y', переходим к следующему изображению
         if key == ord('y'):
-            image_index += 1
+            old_image_index += 1
 
         # Если нажата клавиша 'U', сохраняем название изображения в массиве
         elif key == ord('u'):
-            cv2.imwrite(f'dataset/stage2/processed_{image_index}.png', enlarged_image)
-            image_index += 1
+            cv2.imwrite(f'dataset/stage2/processed_{new_image_index}.png', enlarged_image)
+            old_image_index += 1
+            new_image_index += 1
 
         # Если нажата клавиша 'Esc', выходим из цикла
         elif key == ord('q'):
@@ -81,10 +80,6 @@ while True:
         # Если изображение с заданным индексом не найдено, выходим из цикла
         break
 
-# Выводим названия сохраненных изображений
-print("Сохраненные изображения:")
-for name in saved_image_names:
-    print(name)
 
 # Закрываем окно OpenCV
 cv2.destroyAllWindows()
