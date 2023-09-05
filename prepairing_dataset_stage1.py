@@ -1,4 +1,5 @@
-index = 0
+index = 0 ##################################################################
+image = cv2.imread('dataset/images/1.jpg')
 
 import cv2
 import numpy as np
@@ -54,7 +55,7 @@ cv2.namedWindow('Interactive Image Editor')
 cv2.setMouseCallback('Interactive Image Editor', mouse_callback)
 
 # Считываем изображение
-image = cv2.imread('dataset/images/1.jpg')
+
 original_image = image.copy()
 
 while True:

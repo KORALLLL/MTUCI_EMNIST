@@ -1,12 +1,13 @@
+# Начальный индекс изображения
+old_image_index = 0
+new_image_index = 0
+
+
 import cv2
 import numpy as np
 
 # Путь к папке с изображениями
 image_folder = 'dataset/stage1/'
-
-# Начальный индекс изображения
-old_image_index = 0
-new_image_index = 0
 
 # Коэффициент увеличения пикселей
 scale_factor = 20
@@ -38,7 +39,7 @@ while True:
         square_image = cv2.cvtColor(square_image, cv2.COLOR_BGR2GRAY)
 
         # Уменьшение яркости всех пикселей, кроме белых
-        mask = square_image > 200
+        mask = square_image > 170
         square_image[mask] = 255  # Например, уменьшим яркость вдвое
 
 

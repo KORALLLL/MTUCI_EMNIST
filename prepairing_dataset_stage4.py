@@ -1,11 +1,16 @@
+# Загрузка меток из JSON-файла
+labels = {}
+with open('dataset/stage3/labels1.csv', mode='r') as json_file:
+    labels = json.load(json_file)
+# Индекс текущего изображения
+current_image_index = 0
+
+# Расположение файла
+file_name = 'dataset/stage4/final_labels1.csv'
+
 import cv2
 import json
 import numpy as np
-
-# Загрузка меток из JSON-файла
-labels = {}
-with open('dataset/stage3/labels.csv', mode='r') as json_file:
-    labels = json.load(json_file)
 
 new_labels = {}
 scale_factor = 20
@@ -17,8 +22,7 @@ image_dir = 'dataset/stage2'
 image_filenames = list(labels.keys())
 image_labels = list(labels.values())
 
-# Индекс текущего изображения
-current_image_index = 0
+
 
 # Создаем окно OpenCV
 cv2.namedWindow("Image Window")
@@ -67,9 +71,6 @@ while current_image_index < len(image_filenames):
 
 # Закрытие окна OpenCV
 cv2.destroyWindow("Image Window")
-
-# Расположение файла
-file_name = 'dataset/stage4/final_labels.csv'
 
 
 # Запись в файл
