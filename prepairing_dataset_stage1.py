@@ -32,10 +32,13 @@ def mouse_callback(event, x, y, flags, param):
         if len(points) > 1:
             # Преобразуем точки под учетом масштаба и панорамирования
             transformed_points = transform_points(points, zoom, pan_x, pan_y)
-            element_mask = np.zeros_like(original_image)
+            element_mask = np.full_like(original_image, (0,0,0)) # Важная маска по вырезанному символу
+            
             cv2.drawContours(element_mask, [np.array(transformed_points)], -1, (255, 255, 255), thickness=cv2.FILLED)
             element_image = cv2.bitwise_and(original_image, element_mask)
             
+            element_image[element_mask == 0] = 255
+
             # Находим координаты ограничивающего прямоугольника
             x, y, w, h = cv2.boundingRect(np.array(transformed_points))
             
@@ -51,7 +54,7 @@ cv2.namedWindow('Interactive Image Editor')
 cv2.setMouseCallback('Interactive Image Editor', mouse_callback)
 
 # Считываем изображение
-image = cv2.imread('dataset/images/test.jpg')
+image = cv2.imread('dataset/images/1.jpg')
 original_image = image.copy()
 
 while True:
