@@ -1,4 +1,4 @@
-import json
+import json #test
 
 # Загрузка меток из JSON-файла
 labels = {}
