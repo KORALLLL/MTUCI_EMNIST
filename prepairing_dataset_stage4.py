@@ -1,11 +1,19 @@
-import cv2
 import json
-import numpy as np
 
 # Загрузка меток из JSON-файла
 labels = {}
-with open('dataset/stage3/labels.csv', mode='r') as json_file:
+with open('dataset/stage3/labels2.csv', mode='r') as json_file:
     labels = json.load(json_file)
+# Индекс текущего изображения
+current_image_index = 137
+
+iterator = 0
+
+# Расположение файла
+file_name = 'dataset/stage4/final_labels2.csv'
+
+import cv2
+import numpy as np
 
 new_labels = {}
 scale_factor = 20
@@ -17,8 +25,7 @@ image_dir = 'dataset/stage2'
 image_filenames = list(labels.keys())
 image_labels = list(labels.values())
 
-# Индекс текущего изображения
-current_image_index = 0
+
 
 # Создаем окно OpenCV
 cv2.namedWindow("Image Window")
@@ -28,8 +35,8 @@ input_area = np.full((100, 400, 3), 255, dtype=np.uint8)
 font = cv2.FONT_HERSHEY_SIMPLEX
 input_text = ""
 
-while current_image_index < len(image_filenames):
-    image_filename = image_filenames[current_image_index]
+while iterator < len(image_filenames):
+    image_filename = image_filenames[iterator]
     
     # Загрузка изображения с помощью OpenCV
     image_path = f'{image_dir}/{image_filename}'
@@ -41,7 +48,7 @@ while current_image_index < len(image_filenames):
 
     # Отображение области ввода с текущим текстом
     input_area = np.full((700, 560, 3), 255, dtype=np.uint8)
-    cv2.putText(input_area, image_labels[current_image_index], (1, 500), font, 20, (0, 0, 0), 30, cv2.LINE_AA)
+    cv2.putText(input_area, image_labels[iterator], (1, 500), font, 20, (0, 0, 0), 30, cv2.LINE_AA)
     cv2.imshow('Input Area', input_area)
 
     # Установка позиции окна с изображением
@@ -59,17 +66,18 @@ while current_image_index < len(image_filenames):
     
     # Переход к следующему изображению по нажатию клавиши "Enter"
     elif key == 13:  # Код клавиши "Enter"
-        new_labels[image_filenames[current_image_index]] = image_labels[current_image_index]
+        new_labels[image_filenames[iterator]] = image_labels[iterator]
         current_image_index += 1
+        iterator += 1
 
     elif key ==8:
         current_image_index += 1
+        iterator +=1
+
+    print('index', current_image_index)
 
 # Закрытие окна OpenCV
 cv2.destroyWindow("Image Window")
-
-# Расположение файла
-file_name = 'dataset/stage4/final_labels.csv'
 
 
 # Запись в файл

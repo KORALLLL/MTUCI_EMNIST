@@ -1,3 +1,9 @@
+# Начальный индекс изображения
+image_index = 0
+# Расположение файла
+file_name = 'dataset/stage3/labels1.csv'
+
+
 import cv2
 import numpy as np
 import json
@@ -8,8 +14,7 @@ image_folder = 'dataset/stage2/'
 # Создание пустого словаря для сохранения символов и их соответствующих изображений
 symbol_image_dict = {}
 
-# Начальный индекс изображения
-image_index = 0
+
 
 # Коэффициент увеличения пикселей
 scale_factor = 20
@@ -69,9 +74,6 @@ while True:
         # Если изображение с заданным индексом не найдено, выходим из цикла
         break
 
-
-# Расположение файла
-file_name = 'dataset/stage3/labels.csv'
 
 
 # Запись в файл
