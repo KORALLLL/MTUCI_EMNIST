@@ -1,3 +1,5 @@
+import json
+
 # Загрузка меток из JSON-файла
 labels = {}
 with open('dataset/stage3/labels1.csv', mode='r') as json_file:
@@ -9,7 +11,6 @@ current_image_index = 0
 file_name = 'dataset/stage4/final_labels1.csv'
 
 import cv2
-import json
 import numpy as np
 
 new_labels = {}

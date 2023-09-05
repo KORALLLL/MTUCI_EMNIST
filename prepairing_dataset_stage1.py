@@ -1,8 +1,9 @@
-index = 0 ##################################################################
-image = cv2.imread('dataset/images/1.jpg')
-
 import cv2
 import numpy as np
+
+
+index = 0 ##################################################################
+image = cv2.imread('dataset/images/1.jpg')
 
 # Глобальные переменные
 drawing = False
