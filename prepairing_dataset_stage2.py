@@ -4,9 +4,6 @@ import numpy as np
 # Путь к папке с изображениями
 image_folder = 'dataset/stage1/'
 
-# Создание пустого массива для сохранения названий изображений
-saved_image_names = []
-
 # Начальный индекс изображения
 old_image_index = 0
 new_image_index = 0
@@ -23,11 +20,6 @@ while True:
     image = cv2.imread(image_path)
 
     if image is not None:
-        # Создание маски для черных пикселей
-        black_mask = (image == [0, 0, 0]).all(axis=2)
-
-        # Замена черных пикселей на белые
-        image[black_mask] = [255, 255, 255]
 
         # Определение размера квадрата (берем максимальный размер между шириной и высотой)
         size = max(image.shape[0], image.shape[1])
@@ -46,12 +38,12 @@ while True:
         square_image = cv2.cvtColor(square_image, cv2.COLOR_BGR2GRAY)
 
         # Уменьшение яркости всех пикселей, кроме белых
-        mask = square_image < 230
-        square_image[mask] = square_image[mask] * 0.3  # Например, уменьшим яркость вдвое
+        mask = square_image > 200
+        square_image[mask] = 255  # Например, уменьшим яркость вдвое
 
 
         # Увеличение изображения
-        enlarged_image = cv2.resize(square_image, (28, 28))
+        enlarged_image = cv2.resize(square_image, (28, 28), interpolation=cv2.INTER_LINEAR)
         
         # Увеличение размера пикселей
         enlarged_image1 = cv2.resize(enlarged_image, (28 * scale_factor, 28 * scale_factor), interpolation=cv2.INTER_NEAREST)
