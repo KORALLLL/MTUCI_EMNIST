@@ -1,6 +1,6 @@
 # Начальный индекс изображения
-old_image_index = 2028
-new_image_index = 1670
+old_image_index = 2179
+new_image_index = 1781
 
 
 import cv2
