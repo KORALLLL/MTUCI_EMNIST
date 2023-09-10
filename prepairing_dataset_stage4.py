@@ -2,15 +2,15 @@ import json
 
 # Загрузка меток из JSON-файла
 labels = {}
-with open('dataset/stage3/labels2.csv', mode='r') as json_file:
+with open('dataset/stage3/lbls8s.csv', mode='r') as json_file: ##################################################################
     labels = json.load(json_file)
 # Индекс текущего изображения
-current_image_index = 137
+current_image_index = 0
 
 iterator = 0
 
 # Расположение файла
-file_name = 'dataset/stage4/final_labels2.csv'
+file_name = 'dataset/stage4/final_lbls8.csv' ##################################################################
 
 import cv2
 import numpy as np

@@ -1,7 +1,7 @@
 # Начальный индекс изображения
-image_index = 137
+image_index = 934 ##################################################################
 # Расположение файла
-file_name = 'dataset/stage3/labels2.csv'
+file_name = 'dataset/stage3/lbls10s.csv' ##################################################################
 
 
 import cv2
@@ -26,7 +26,7 @@ input_text = ""
 
 while True:
     # Формируем имя файла
-    image_filename = f'processed_{image_index}.png'
+    image_filename = f'new_image_{image_index}.png'
     image_path = image_folder + image_filename
 
     # Загрузка изображения

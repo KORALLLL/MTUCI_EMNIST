@@ -1,15 +1,9 @@
-<<<<<<< HEAD
-index = 23
-
-=======
->>>>>>> 538e0447b54ed0e6fd0950c076673406f58c1ce9
 import cv2
 import numpy as np
-import copy
 
 
-index = 357 ##################################################################
-image = cv2.imread('dataset/images/3.jpg')
+index = 895 ##################################################################
+image = cv2.imread('dataset/images/six.png') ##################################################################
 
 # Глобальные переменные
 drawing = False
@@ -53,7 +47,7 @@ def mouse_callback(event, x, y, flags, param):
             # Обрезаем изображение, чтобы оставить только непустые фрагменты
             cropped_element = element_image[y:y+h, x:x+w]
             
-            cv2.imwrite(f'dataset/stage1/element_{element_index + index}.png', cropped_element)
+            cv2.imwrite(f'dataset/stage1/photo_element_{element_index + index}.png', cropped_element)
             element_index += 1
         points = []
 

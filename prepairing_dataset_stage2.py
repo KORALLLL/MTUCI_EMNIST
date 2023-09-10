@@ -1,6 +1,6 @@
 # Начальный индекс изображения
-old_image_index = 357
-new_image_index = 325
+old_image_index = 895 ##################################################################
+new_image_index = 934 ##################################################################
 
 
 import cv2
@@ -14,7 +14,7 @@ scale_factor = 20
 
 while True:
     # Формируем имя файла
-    image_filename = f'element_{old_image_index}.png'
+    image_filename = f'photo_element_{old_image_index}.png'
     image_path = image_folder + image_filename
 
     # Загрузка изображения
@@ -62,7 +62,7 @@ while True:
 
         # Если нажата клавиша 'U', сохраняем название изображения в массиве
         elif key == ord('u'):
-            cv2.imwrite(f'dataset/stage2/processed_{new_image_index}.png', enlarged_image)
+            cv2.imwrite(f'dataset/stage2/new_image_{new_image_index}.png', enlarged_image)
             old_image_index += 1
             new_image_index += 1
 
