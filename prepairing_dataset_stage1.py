@@ -1,7 +1,8 @@
-index = 0
+index = 23
 
 import cv2
 import numpy as np
+import copy
 
 # Глобальные переменные
 drawing = False
