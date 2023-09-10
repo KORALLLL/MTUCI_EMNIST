@@ -1,7 +1,7 @@
 # Начальный индекс изображения
-image_index = 853
+image_index = 1275
 # Расположение файла
-file_name = 'dataset/stage3/pfs4.csv'
+file_name = 'dataset/stage3/pfs5.csv'
 
 
 import cv2
