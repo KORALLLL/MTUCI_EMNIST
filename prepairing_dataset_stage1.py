@@ -2,8 +2,8 @@ import cv2
 import numpy as np
 
 
-index = 0 ##################################################################
-image = cv2.imread('dataset/images/1.jpg')
+index = 898 ##################################################################
+image = cv2.imread('dataset/images/4.jpg')
 
 # Глобальные переменные
 drawing = False
@@ -47,7 +47,7 @@ def mouse_callback(event, x, y, flags, param):
             # Обрезаем изображение, чтобы оставить только непустые фрагменты
             cropped_element = element_image[y:y+h, x:x+w]
             
-            cv2.imwrite(f'dataset/stage1/element_{element_index + index}.png', cropped_element)
+            cv2.imwrite(f'dataset/stage1/fs_{element_index + index}.png', cropped_element)
             element_index += 1
         points = []
 

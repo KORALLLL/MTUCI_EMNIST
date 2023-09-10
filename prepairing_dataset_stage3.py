@@ -1,7 +1,7 @@
 # Начальный индекс изображения
-image_index = 0
+image_index = 853
 # Расположение файла
-file_name = 'dataset/stage3/labels1.csv'
+file_name = 'dataset/stage3/pfs4.csv'
 
 
 import cv2
@@ -26,7 +26,7 @@ input_text = ""
 
 while True:
     # Формируем имя файла
-    image_filename = f'processed_{image_index}.png'
+    image_filename = f'ss_{image_index}.png'
     image_path = image_folder + image_filename
 
     # Загрузка изображения
