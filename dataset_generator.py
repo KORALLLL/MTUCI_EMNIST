@@ -14,8 +14,9 @@ csv_names = os.listdir("dataset/stage4")
 transform = transforms.Compose([transforms.ToTensor()])
 image_list = []
 labels_list = []
-strings = '0123456789abcdefghijklmnopqrstuvwxyz'
-label_mapping = {strings[i]:i for i in range(36)}
+strings = '0123456789abcdefghijklmnpqrstuvwxyz'
+label_mapping = {strings[i]:i for i in range(35)}
+label_mapping['o'] = 0
 print(label_mapping)
 
 
