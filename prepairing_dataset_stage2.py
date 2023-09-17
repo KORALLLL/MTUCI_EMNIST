@@ -1,6 +1,7 @@
 # Начальный индекс изображения
-old_image_index = 1328
-new_image_index = 1275
+
+old_image_index = 1673
+new_image_index = 1589
 
 
 import cv2
@@ -54,6 +55,7 @@ while True:
 
         # Ожидание нажатия клавиши
         key = cv2.waitKey(0)
+        print('old index', old_image_index)
 
         # Если нажата клавиша 'Y', переходим к следующему изображению
         if key == ord('y'):

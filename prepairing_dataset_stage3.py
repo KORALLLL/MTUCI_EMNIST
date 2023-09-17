@@ -1,7 +1,8 @@
 # Начальный индекс изображения
-image_index = 1275
+image_index = 1589
 # Расположение файла
-file_name = 'dataset/stage3/pfs5.csv'
+file_name = 'dataset/stage3/pfs6.csv'
+
 
 
 import cv2
@@ -61,7 +62,7 @@ while True:
             input_text = input_text[:-1]
         # Если нажата клавиша enter, сохраняем символ и название изображения в словаре
         elif key == 13:  # 13 соответствует enter
-            print(input_text)
+            print(input_text, 'current index', image_index)
             symbol_image_dict[image_filename] = input_text
             input_text = ""
             image_index += 1  # Увеличиваем индекс изображения после сохранения символа
