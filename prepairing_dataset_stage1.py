@@ -2,8 +2,8 @@ import cv2
 import numpy as np
 
 #сделана одна строка
-index = 3101#################################################################
-image = cv2.imread('dataset/images/16.jpg')
+index = 4249#################################################################
+image = cv2.imread('dataset/images/20.jpg')
 
 # Глобальные переменные
 drawing = False
