@@ -3,7 +3,7 @@ import numpy as np
 
 #сделана одна строка
 index = 5662#################################################################
-image = cv2.imread('dataset/images/24.jpg')
+image = cv2.imread('dataset/images/25.jpg')
 
 # Глобальные переменные
 drawing = False

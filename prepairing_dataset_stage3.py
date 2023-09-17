@@ -1,7 +1,7 @@
 # Начальный индекс изображения
-image_index = 4877
+image_index = 5177
 # Расположение файла
-file_name = 'dataset/stage3/labels23.csv'
+file_name = 'dataset/stage3/labels24.csv'
 
 
 import cv2
