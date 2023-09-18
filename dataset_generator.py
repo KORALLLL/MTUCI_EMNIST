@@ -32,11 +32,12 @@ for img_name, label in labels.items():
     image_path = os.path.join(images_folder, img_name)
     image = Image.open(image_path)
     image_tensor = transform(image)
-    image_list.append(image_tensor)
+
     if label!='' and label in strings:
         labels_list.append(label_mapping[label])
+        image_list.append(image_tensor)
 
-print(len(labels_list))
+print(len(labels_list), len(image_list))
 
 
 custom_dataset = {'data': torch.stack(image_list), 'targets': torch.tensor(labels_list)}
