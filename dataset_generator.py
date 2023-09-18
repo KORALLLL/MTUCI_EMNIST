@@ -17,7 +17,7 @@ labels_list = []
 strings = '0123456789abcdefghijklmnpqrstuvwxyz'
 label_mapping = {strings[i]:i for i in range(35)}
 label_mapping['o'] = 0
-print(label_mapping)
+
 
 
 for i in csv_names:
@@ -34,6 +34,8 @@ for img_name, label in labels.items():
     image_list.append(image_tensor)
     if label!='':
         labels_list.append(label_mapping[label])
+
+print(len(labels_list))
 
 custom_dataset = {'data': torch.stack(image_list), 'targets': torch.tensor(labels_list)}
 
