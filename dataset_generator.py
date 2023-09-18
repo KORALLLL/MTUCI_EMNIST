@@ -1,4 +1,4 @@
-dataset_filename = "Kirill_dataset.pkl"
+dataset_filename = "Nastya_dataset.pkl"
 
 import json
 import os
